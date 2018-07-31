@@ -70,7 +70,12 @@
     "xml-escape"
   ],
   "nyc": {
-    "include": ["bin/templates/scripts/**"],
-    "reporter": ["lcov", "text"]
+    "include": [
+      "bin/templates/scripts/**"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ]
   }
 }
