@@ -18,12 +18,12 @@
     "cordova:platform"
   ],
   "scripts": {
-    "test": "npm run e2e-tests && npm run objc-tests && npm run unit-tests",
+    "test": "npm-run-all e2e-tests objc-tests unit-tests",
     "test:component": "jasmine --config=tests/spec/component.json",
     "posttest": "npm run eslint",
     "cover": "nyc jasmine --config=tests/spec/coverage.json",
     "e2e-tests": "jasmine tests/spec/create.spec.js",
-    "objc-tests": "npm run objc-tests-lib && npm run objc-tests-framework",
+    "objc-tests": "npm-run-all objc-tests-lib objc-tests-framework",
     "objc-tests-lib": "xcodebuild test -workspace tests/cordova-ios.xcworkspace -scheme CordovaLibTests -destination \"platform=iOS Simulator,name=iPhone 5\" CONFIGURATION_BUILD_DIR=\"`mktemp -d 2>/dev/null || mktemp -d -t 'cordova-ios'`\"",
     "objc-tests-framework": "xcodebuild test -workspace tests/cordova-ios.xcworkspace -scheme CordovaFrameworkApp -destination \"platform=iOS Simulator,name=iPhone 5\" CONFIGURATION_BUILD_DIR=\"`mktemp -d 2>/dev/null || mktemp -d -t 'cordova-ios'`\"",
     "preobjc-tests": "tests/scripts/killsim.js",
@@ -42,6 +42,7 @@
     "eslint-plugin-standard": "^3.0.1",
     "jasmine": "^3.1.0",
     "nodeunit": "^0.8.7",
+    "npm-run-all": "^4.1.3",
     "nyc": "^12.0.2",
     "rewire": "^4.0.1",
     "tmp": "^0.0.26"
